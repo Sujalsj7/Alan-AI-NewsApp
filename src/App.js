@@ -1,12 +1,10 @@
-// import logo from './logo.svg';
-
 import React, { useState, useEffect } from 'react';
 import { Typography } from '@material-ui/core';
 import wordsToNumbers from 'words-to-numbers';
 
 import alanBtn from "@alan-ai/alan-sdk-web";
 import logo from './logo.jpg';
-// import "./App.css";
+
 
 
 import NewsCards from "./components/NewsCards/NewsCards";
@@ -26,7 +24,7 @@ const App = () => {
       key: alanKey,
       onCommand: ({ command, articles, number }) => {
         if (command === 'newHeadlines') {
-          // console.log(articles);
+          
           setNewsArticles(articles);
           setActiveArticle(-1);
         }
@@ -42,7 +40,7 @@ const App = () => {
           if (parsedNumber > articles.length) {
             alanBtn().playText('Please try that again...');
           } else if (article) {
-            window.open(articles.url, '_blank');
+            window.open(article.url, '_blank');
             alanBtn().playText('Opening...');
           } else {
             alanBtn().playText('Please try that again...');
@@ -60,7 +58,7 @@ const App = () => {
             <div className={classes.card}><Typography variant="h5" component="h2">Try saying: <br /><br />Go back</Typography></div>
           </div>
         ) : null}
-        {/* <img src='' className={classes.alanLogo} alt="logo" /> */}
+      
         <img src={logo} className={classes.alanLogo} alt="logo" ></img>
   
       </div>
